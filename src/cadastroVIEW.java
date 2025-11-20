@@ -145,6 +145,22 @@ public class cadastroVIEW extends javax.swing.JFrame {
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
       
+          ProdutosDTO produto = new ProdutosDTO();
+        ProdutosDAO salvar = new ProdutosDAO();
+        try{
+            produto.setNome(txtNome.getText());
+            produto.setValor(Integer.parseInt(cadastroValor.getText()));
+            
+            conectaDAO dao = new conectaDAO();
+            dao.connectDB();
+            
+            salvar.cadastrarProduto(produto);
+            JOptionPane.showMessageDialog(null,"Cadastro realizado com sucesso");
+            
+        }catch(IllegalArgumentException a){
+            JOptionPane.showMessageDialog(null, "Cadastro não realizado.");
+        }
+
         
 
       

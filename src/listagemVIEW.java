@@ -15,7 +15,7 @@ import javax.swing.table.TableRowSorter;
  *
  * @author Adm
  */
-public class listagemVIEW extends javax.swing.JFrame {
+  public class listagemVIEW extends javax.swing.JFrame {
 public void listagem(){
     ProdutosDAO produto = new ProdutosDAO();
     List<ProdutosDTO> listagem = produto.listarProdutos();
@@ -159,7 +159,18 @@ public void listagem(){
 
     private void btnVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderActionPerformed
       
+        int id = Integer.parseInt(id_produto_venda.getText());
+        ProdutosDTO produto = new ProdutosDTO();
+        produto.setId(id);
+        produto.setStatus("Vendido");
         
+        ProdutosDAO dao = new ProdutosDAO();
+        dao.atualizar(produto);
+        
+        JOptionPane.showMessageDialog(null, "Produto vendido");
+        id_produto_venda.setText("");
+
+  
         
         
         
