@@ -170,6 +170,7 @@ public void listagem(){
         JOptionPane.showMessageDialog(null, "Produto vendido");
         id_produto_venda.setText("");
 
+
   
         
         
