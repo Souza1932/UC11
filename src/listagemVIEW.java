@@ -20,16 +20,18 @@ public void listagem(){
     ProdutosDAO produto = new ProdutosDAO();
     List<ProdutosDTO> listagem = produto.listarProdutos();
     DefaultTableModel tabela = (DefaultTableModel) listaProdutos.getModel();
-  
+    
+   
     
     for(ProdutosDTO p : listagem){
-        Object[] o = new Object[]{
+      Object[] o = new Object[]{
             p.getId(),
             p.getNome(),
             p.getValor(),
             p.getStatus(),
         };
         tabela.addRow(o);
+    
     }
 }
 
@@ -155,11 +157,22 @@ public void listagem(){
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderActionPerformed
  
-     
+     int id = Integer.parseInt(id_produto_venda.getText());
+        ProdutosDTO produto = new ProdutosDTO();
+        produto.setId(id);
+        produto.setStatus("Vendido");
+        
+        ProdutosDAO dao = new ProdutosDAO();
+        dao.atualizar(produto);
+        
+        JOptionPane.showMessageDialog(null, "Produto vendido");
+        id_produto_venda.setText("");
+
   
    
 
@@ -177,8 +190,11 @@ public void listagem(){
 
     private void btnVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendasActionPerformed
      
-      
-        
+        ProdutosDAO d = new ProdutosDAO();
+         int id = Integer.parseInt(id_produto_venda.getText());
+         d.remover(id);
+         id_produto_venda.setText("");
+         
     }//GEN-LAST:event_btnVendasActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed

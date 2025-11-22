@@ -31,7 +31,7 @@ public class ProdutosDAO {
 
        public void cadastrarProduto (ProdutosDTO produto){
         
-        String sql = "INSERT INTO produtos (nome, valor) VALUES (?, ?) ";
+        String sql = "INSERT INTO produtos (nome, valor, status) VALUES (?, ?, ?) ";
         try{
              conectaDAO dao = new conectaDAO();
              conn = dao.connectDB();
@@ -40,17 +40,14 @@ public class ProdutosDAO {
         
         prep.setString(1, produto.getNome());
         prep.setInt(2, produto.getValor());
+        prep.setString(3, produto.getStatus());
         prep.executeUpdate();
     
         }catch(SQLException a){
             a.getErrorCode();
         }
         
-        
-        
-        
-        
-    }
+   }
     
     public List<ProdutosDTO> listarProdutos(){
         String sql = "SELECT * FROM produtos";
@@ -114,5 +111,34 @@ public class ProdutosDAO {
        
         
     }
-    
 }
+
+       
+
+
+    
+ 
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

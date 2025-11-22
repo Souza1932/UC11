@@ -11,7 +11,10 @@ public class ProdutosDTO {
     private Integer id;
     private String nome;
     private int valor;
-    private String status = " A venda";
+    private String status;
+  
+
+   
 
     public int getId() {
         return id;
@@ -42,6 +45,7 @@ public class ProdutosDTO {
     }
 
     public void setStatus(String status) {
+       
         this.status = status;
     }
     

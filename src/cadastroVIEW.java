@@ -150,6 +150,8 @@ public class cadastroVIEW extends javax.swing.JFrame {
         try{
             produto.setNome(txtNome.getText());
             produto.setValor(Integer.parseInt(cadastroValor.getText()));
+            produto.setStatus("A venda");
+            salvar.cadastrarProduto(produto);
             
             conectaDAO dao = new conectaDAO();
             dao.connectDB();
