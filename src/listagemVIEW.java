@@ -15,23 +15,25 @@ import javax.swing.table.TableRowSorter;
  *
  * @author Adm
  */
-public class listagemVIEW extends javax.swing.JFrame {
-public void listagem(){
+  public final class listagemVIEW extends javax.swing.JFrame {
+
+    public void listagem(){
     ProdutosDAO produto = new ProdutosDAO();
     List<ProdutosDTO> listagem = produto.listarProdutos();
     DefaultTableModel tabela = (DefaultTableModel) listaProdutos.getModel();
-  
     
-    for(ProdutosDTO p : listagem){
-        Object[] o = new Object[]{
+   for(ProdutosDTO p : listagem){
+      Object[] o = new Object[]{
             p.getId(),
             p.getNome(),
             p.getValor(),
             p.getStatus(),
         };
         tabela.addRow(o);
+    
     }
 }
+
 
 
 
@@ -40,7 +42,9 @@ public void listagem(){
      */
     public listagemVIEW() {
         initComponents();
-        listarProdutos();
+        listagem();
+        
+        
     }
 
     /**
@@ -155,20 +159,18 @@ public void listagem(){
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderActionPerformed
-      
-        int id = Integer.parseInt(id_produto_venda.getText());
-        ProdutosDTO produto = new ProdutosDTO();
-        produto.setId(id);
-        produto.setStatus("Vendido");
-        
-        ProdutosDAO dao = new ProdutosDAO();
-        dao.atualizar(produto);
-        
-        JOptionPane.showMessageDialog(null, "Produto vendido");
-        id_produto_venda.setText("");
+ 
+     
+
+  
+   
+
+
+  
         
         
         
@@ -181,8 +183,11 @@ public void listagem(){
 
     private void btnVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendasActionPerformed
       
-        
-        
+     listaNova();
+ 
+       
+  
+         
     }//GEN-LAST:event_btnVendasActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
@@ -235,13 +240,9 @@ public void listagem(){
        public void listarProdutos(){
         try {
             ProdutosDAO produtosdao = new ProdutosDAO();
-            
-            DefaultTableModel model = (DefaultTableModel) listaProdutos.getModel();
-            model.setNumRows(0);
-            listaProdutos.setRowSorter(new TableRowSorter(model));
-            
-            ArrayList<ProdutosDTO> listagem = (ArrayList<ProdutosDTO>) produtosdao.listarProdutos();
-            
+            List<ProdutosDTO> listagem = produtosdao.listarProdutos();
+            DefaultTableModel model = new DefaultTableModel( );
+          
             for(int i = 0; i < listagem.size(); i++){
                 model.addRow(new Object[]{
                     listagem.get(i).getId(),

@@ -144,8 +144,8 @@ public class cadastroVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNomeActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-       
-        ProdutosDTO produto = new ProdutosDTO();
+      
+          ProdutosDTO produto = new ProdutosDTO();
         ProdutosDAO salvar = new ProdutosDAO();
         try{
             produto.setNome(txtNome.getText());
@@ -160,6 +160,10 @@ public class cadastroVIEW extends javax.swing.JFrame {
         }catch(IllegalArgumentException a){
             JOptionPane.showMessageDialog(null, "Cadastro não realizado.");
         }
+
+        
+
+      
         
         
     }//GEN-LAST:event_btnCadastrarActionPerformed
