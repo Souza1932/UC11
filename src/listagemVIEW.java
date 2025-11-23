@@ -222,7 +222,7 @@ import javax.swing.table.TableRowSorter;
 
     private void btnVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendasActionPerformed
       
-     listaNova();
+    
  
        
   
