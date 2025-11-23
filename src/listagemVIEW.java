@@ -33,6 +33,33 @@ import javax.swing.table.TableRowSorter;
     
     }
 }
+    
+    public void listaNova(){
+   ProdutosDAO dao = new ProdutosDAO();
+      
+       List<ProdutosDTO> listaNova = dao.listarProdutos();
+       DefaultTableModel newModel = new DefaultTableModel(new Object[]{"id", "nome", "valor", "status"}, 0);
+       
+       for(ProdutosDTO produto : listaNova){
+           if("Vendido".equalsIgnoreCase(produto.getStatus())){
+               newModel.addRow(new Object[]{
+                   produto.getId(),
+                   produto.getNome(),
+                   produto.getValor(),
+                   produto.getStatus(),
+               });
+               
+           }
+       }
+       
+       listaProdutos.setModel(newModel);
+}
+
+    
+    
+    
+
+
 
 
 
@@ -163,7 +190,19 @@ import javax.swing.table.TableRowSorter;
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderActionPerformed
- 
+  
+        int id = Integer.parseInt(id_produto_venda.getText());
+        ProdutosDTO produto = new ProdutosDTO();
+       
+        produto.setId(id);
+        produto.setStatus("Vendido");
+        
+        ProdutosDAO dao = new ProdutosDAO();
+        dao.atualizar(produto);
+        
+        JOptionPane.showMessageDialog(null, "Produto vendido");
+        id_produto_venda.setText("");
+
      
 
   
